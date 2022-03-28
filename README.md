@@ -1,1 +1,1 @@
-# PrincipalGeodesicsAnalysisMergeTree
+# PrincipalGeodesicAnalysisMergeTree
