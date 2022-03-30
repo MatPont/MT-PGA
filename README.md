@@ -33,7 +33,7 @@ If your OS does not allow to install automatically the latest version of cmake (
 
 ```bash
 sudo apt-get install libssl-dev 
-wget http://www.cmake.org/files/v3.2/cmake-3.21.6.tar.gz
+wget http://www.cmake.org/files/v3.21/cmake-3.21.6.tar.gz
 tar xf cmake-3.21.6.tar.gz
 cd cmake-3.21.6
 ./configure --prefix="./install/"
