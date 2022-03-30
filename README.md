@@ -17,7 +17,26 @@ First, go in the `ttk-paraview` directory then run the following commands:
 
 ```bash
 mkdir build && cd build
-cmake -DCMAKE_BUILD_TYPE=Release -DPARAVIEW_USE_PYTHON=ON -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON -DPARAVIEW_PYTHON_VERSION=3 -DCMAKE_INSTALL_PREFIX=../install ..
+cmake -DCMAKE_BUILD_TYPE=Release -DPARAVIEW_USE_PYTHON=ON -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON -DCMAKE_INSTALL_PREFIX=../install ..
+make -j4
+make install
+```
+
+Some warnings are expected when using the `make` command, they should not cause any problems.
+
+## Install cmake 3.21 (Optional)
+
+To install TTK (next step), you will need cmake 3.21 or higher.
+If your OS does not allow to install automatically the latest version of cmake (like Ubuntu 20) you can install it with the following commands:
+(replace the 4 in "make -j4" by the number of available cores on your system)
+(if you do not want to install libssl-dev you can add `-DCMAKE_USE_OPENSSL=OFF` at the end of the command `configure`)
+
+```bash
+sudo apt-get install libssl-dev 
+wget http://www.cmake.org/files/v3.2/cmake-3.21.6.tar.gz
+tar xf cmake-3.21.6.tar.gz
+cd cmake-3.21.6
+./configure --prefix="./install/"
 make -j4
 make install
 ```
@@ -26,18 +45,20 @@ make install
 
 Go in the `ttk-dev2` directory then run the following commands:
 (replace the 4 in "make -j4" by the number of available cores on your system)
+(if you have needed to install cmake with the step above then replace `cmake` by `../../cmake-3.21.6/install/bin/cmake`)
 
 ```bash
 mkdir build && cd build
-paraviewPath=`pwd`/../../ttk-paraview/install/lib/cmake/paraview-5.9
-cmake -DCMAKE_INSTALL_PREFIX=../install -DParaView_DIR=$paraviewPath ..
+paraviewPath=`pwd`/../../ttk-paraview/install/lib/cmake/paraview-5.10
+pluginDir=`pwd`/lib/TopologyToolKit
+cmake -DCMAKE_INSTALL_PREFIX=../install -DParaView_DIR=$paraviewPath -DTTK_INSTALL_PLUGIN_DIR=$pluginDir ..
 make -j4
 make install
 ```
 
 ## Get the results
 
-Extract the data:
+Go in the root directory of the unziped archive and extract the data:
 
 ```bash
 tar xvJf data.tar.xz
@@ -45,7 +66,7 @@ tar xvJf data.tar.xz
 
 ### table 1
 
-To reproduce the results of Table 1 in the paper, please go in the `scripts` directory and enter the following commands:
+To reproduce the results of the time table in the paper, please go in the `scripts` directory and enter the following commands:
 
 ```bash
 for f in *.sh; do chmod u+x $f; done

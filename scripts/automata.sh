@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ $# -ne 1 ]; then
-  echo "Usage "$0 "numberOfThreads"
+if [ $# -ne 2 ]; then
+  echo "Usage "$0 "isPD numberOfThreads"
   exit
 fi
 
@@ -23,6 +23,8 @@ eps1s=($defaultEps1 $defaultEps1 $defaultEps1 $defaultEps1 $defaultEps1 10 $defa
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
+pvpython=../ttk-paraview/install/bin/pvpython
+
 eps2=95
 eps3=90
 
@@ -43,6 +45,6 @@ for j in `seq 1 $noRun`; do
     coef=0 # only compute on split trees
     
     echo -e "${GREEN}_____________ gpcaMT.py $path $pt $eps $eps2 $eps3 $coef $barySizeLimit $isPD $noThreads _____________${NC}"
-    pvpython gpcaMT.py $path $pt $eps $eps2 $eps3 $coef $barySizeLimit $isPD $noThreads 
+    $pvpython gpcaMT.py $path $pt $eps $eps2 $eps3 $coef $barySizeLimit $isPD $noThreads 
   done
 done
