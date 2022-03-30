@@ -1,6 +1,6 @@
 /// \ingroup base
 /// \class ttk::MergeTreePrincipalGeodesicsDecoding
-/// \author Mathieu Pont <mathieu.pont@lip6.fr>
+/// \author XXX
 /// \date 2021.
 ///
 /// This module defines the %MergeTreePrincipalGeodesicsDecoding class that

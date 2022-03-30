@@ -1,6 +1,6 @@
 /// \ingroup vtk
 /// \class ttkMergeTreePrincipalGeodesicsDecoding
-/// \author Mathieu Pont <mathieu.pont@lip6.fr>
+/// \author XXX
 /// \date 2022.
 ///
 /// \brief TTK VTK-filter that wraps the

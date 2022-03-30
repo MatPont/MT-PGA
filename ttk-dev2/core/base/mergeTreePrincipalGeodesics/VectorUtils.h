@@ -1,6 +1,6 @@
 /// \ingroup base
 /// \class ttk::VectorUtils
-/// \author Mathieu Pont <mathieu.pont@lip6.fr>
+/// \author XXX
 /// \date 2021
 ///
 /// This module defines the TODO

@@ -1,6 +1,6 @@
 /// \ingroup base
 /// \class ttk::MergeTreePrincipalGeodesicsCurvature
-/// \author Mathieu Pont <mathieu.pont@lip6.fr>
+/// \author XXX
 /// \date 2022.
 ///
 /// This module defines the %MergeTreePrincipalGeodesicsCurvature class that
