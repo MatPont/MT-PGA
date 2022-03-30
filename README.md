@@ -29,7 +29,7 @@ Go in the `ttk-dev2` directory then run the following commands:
 
 ```bash
 mkdir build && cd build
-paraviewPath=`pwd`/../../ParaView-v5.7.0/install/lib/cmake/paraview-5.7
+paraviewPath=`pwd`/../../ttk-paraview/install/lib/cmake/paraview-5.9
 cmake -DCMAKE_INSTALL_PREFIX=../install -DParaView_DIR=$paraviewPath ..
 make -j4
 make install
@@ -55,6 +55,6 @@ Run the experiments (it will take a LONG time) and print table:
 (replace N with the number of available cores on your system)
 
 ```bash
-./automata.sh N
+./automata2.sh N
 ./timeTable.sh
 ```
