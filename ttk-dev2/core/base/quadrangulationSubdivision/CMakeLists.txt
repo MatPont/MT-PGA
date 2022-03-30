@@ -1,0 +1,10 @@
+ttk_add_base_library(quadrangulationSubdivision
+  SOURCES
+   QuadrangulationSubdivision.cpp
+  HEADERS
+   QuadrangulationSubdivision.h
+  DEPENDS
+   dijkstra
+   geometry
+   triangulation
+  )

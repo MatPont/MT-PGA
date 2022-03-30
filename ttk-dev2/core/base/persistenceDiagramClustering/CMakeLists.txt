@@ -1,0 +1,16 @@
+ttk_add_base_library(persistenceDiagramClustering
+  SOURCES
+    PersistenceDiagramClustering.cpp
+    PersistenceDiagramBarycenter.cpp
+  HEADERS
+    PersistenceDiagramClustering.h
+    PersistenceDiagramBarycenter.h
+    PDBarycenter.h
+    PDBarycenterImpl.h
+    PDClustering.h
+    PDClusteringImpl.h
+  DEPENDS
+    common
+    persistenceDiagramAuction
+    kdTree
+  )

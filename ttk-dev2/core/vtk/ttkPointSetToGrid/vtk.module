@@ -1,0 +1,4 @@
+NAME
+  ttkPointSetToGrid
+DEPENDS
+  ttkAlgorithm

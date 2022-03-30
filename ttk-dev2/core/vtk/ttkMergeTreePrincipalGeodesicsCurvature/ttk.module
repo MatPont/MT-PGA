@@ -1,0 +1,10 @@
+NAME
+  ttkMergeTreePrincipalGeodesicsCurvature
+SOURCES
+  ttkMergeTreePrincipalGeodesicsCurvature.cpp
+HEADERS
+  ttkMergeTreePrincipalGeodesicsCurvature.h
+DEPENDS
+  mergeTreePrincipalGeodesicsCurvature
+  ttkFTMTree
+  ttkAlgorithm

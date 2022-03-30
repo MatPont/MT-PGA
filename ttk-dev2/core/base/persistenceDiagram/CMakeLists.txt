@@ -1,0 +1,13 @@
+ttk_add_base_library(persistenceDiagram
+  SOURCES
+    PersistenceDiagram.cpp
+  HEADERS
+    PersistenceDiagram.h
+  DEPENDS
+    discreteGradient
+    triangulation
+    ftmTreePP
+    persistentSimplexPairs
+    progressiveTopology
+    approximateTopology
+    )

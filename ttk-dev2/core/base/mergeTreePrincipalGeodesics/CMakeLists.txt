@@ -1,0 +1,13 @@
+ttk_add_base_library(mergeTreePrincipalGeodesics
+  SOURCES
+    MergeTreePrincipalGeodesics.cpp
+    VectorUtils.cpp
+  HEADERS
+    MergeTreePrincipalGeodesicsBase.h
+    MergeTreePrincipalGeodesics.h
+    MergeTreePrincipalGeodesicsUtils.h
+    VectorUtils.h
+  DEPENDS
+    triangulation
+    mergeTreeClustering
+)

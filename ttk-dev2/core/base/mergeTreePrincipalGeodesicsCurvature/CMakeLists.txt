@@ -1,0 +1,9 @@
+ttk_add_base_library(mergeTreePrincipalGeodesicsCurvature
+  SOURCES
+    MergeTreePrincipalGeodesicsCurvature.cpp
+  HEADERS
+    MergeTreePrincipalGeodesicsCurvature.h
+  DEPENDS
+    triangulation
+    mergeTreePrincipalGeodesics
+)

@@ -1,0 +1,8 @@
+NAME
+  ttkPointSetToGrid
+SOURCES
+  ttkPointSetToGrid.cpp
+HEADERS
+  ttkPointSetToGrid.h
+DEPENDS
+  ttkAlgorithm

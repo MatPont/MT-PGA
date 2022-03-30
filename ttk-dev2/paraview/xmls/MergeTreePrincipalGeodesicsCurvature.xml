@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Add widgets to the ParaView UI that control the member variables of the vtk filter -->
+<!-- NOTE: Unfortunately the widget types and their properties are not well documented. -->
+<!--       The best thing you can do is to look at filters that have similar widgets you require and copy their source code. -->
+<!--       Good resources are: IcoSphere.xml, PersistenceDiagram.xml, and ArrayEditor.xml -->
+<ServerManagerConfiguration>
+  <ProxyGroup name="filters">
+    <SourceProxy name="ttkMergeTreePrincipalGeodesicsCurvature" class="ttkMergeTreePrincipalGeodesicsCurvature" label="TTK MergeTreePrincipalGeodesicsCurvature">
+      <Documentation long_help="MergeTreePrincipalGeodesicsCurvature Long" short_help="MergeTreePrincipalGeodesicsCurvature Short">This filter is a well documented ttk example filter that computes for each vertex of a vtkDataSet the average scalar value of itself and its neighbors.</Documentation>
+
+      <!-- INPUT DATA OBJECTS -->
+      <InputProperty
+        name="Decoded trees"
+        port_index="0"
+        command="SetInputConnection">
+        <ProxyGroupDomain name="groups">
+          <Group name="sources"/>
+          <Group name="filters"/>
+        </ProxyGroupDomain>
+        <DataTypeDomain name="input_type">
+          <DataType value="vtkMultiBlockDataSet"/>
+        </DataTypeDomain>
+        <InputArrayDomain name="input_scalars" number_of_components="1">
+          <Property name="Input" function="FieldDataSelection" />
+        </InputArrayDomain>
+        <Documentation>
+          
+        </Documentation>
+)      </InputProperty>
+
+      <InputProperty
+        name="Surface"
+        port_index="1"
+        command="SetInputConnection">
+        <ProxyGroupDomain name="groups">
+          <Group name="sources"/>
+          <Group name="filters"/>
+        </ProxyGroupDomain>
+        <DataTypeDomain name="input_type">
+          <DataType value="vtkUnstructuredGrid"/>
+        </DataTypeDomain>
+        <InputArrayDomain name="input_scalars" number_of_components="1">
+          <Property name="Input" function="FieldDataSelection" />
+        </InputArrayDomain>
+        <Documentation>
+          
+        </Documentation>
+      </InputProperty>
+
+      <!-- INPUT PARAMETER WIDGETS -->      
+      <IntVectorProperty
+      name="ComputeSurfaceArea"
+      command="SetComputeSurfaceArea"
+      label="Compute Surface Area"
+      number_of_elements="1"
+      default_values="0">
+        <Documentation>
+          
+        </Documentation>
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+      
+      <IntVectorProperty
+      name="ComputeGeodesicDistance"
+      command="SetComputeGeodesicDistance"
+      label="Compute Geodesic Distance"
+      number_of_elements="1"
+      default_values="0">
+        <Hints>
+        <PropertyWidgetDecorator type="GenericDecorator"
+                                mode="visibility"
+                                property="ComputeSurfaceArea"
+                                value="0" />
+        </Hints>
+        <Documentation>
+          
+        </Documentation>
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+
+      <!-- OUTPUT PARAMETER WIDGETS -->
+      
+      <!-- Create a UI group that contains all input parameter widgets -->
+      <PropertyGroup panel_widget="Line" label="Input Options">
+        <Property name="ComputeSurfaceArea"/>
+        <Property name="ComputeGeodesicDistance"/>
+      </PropertyGroup>
+
+      <!-- Create a UI group that contains all output parameter widgets -->
+      <PropertyGroup panel_widget="Line" label="Output Options">
+        
+      </PropertyGroup>
+
+      <!-- DEBUG -->
+      ${DEBUG_WIDGETS}
+
+      <!-- MENU CATEGORY -->
+      <Hints>
+        <ShowInMenu category="TTK - Ensemble Scalar Data" />
+      </Hints>
+    </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

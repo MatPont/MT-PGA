@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Add widgets to the ParaView UI that control the member variables of the vtk filter -->
+<!-- NOTE: Unfortunately the widget types and their properties are not well documented. -->
+<!--       The best thing you can do is to look at filters that have similar widgets you require and copy their source code. -->
+<!--       Good resources are: IcoSphere.xml, PersistenceDiagram.xml, and ArrayEditor.xml -->
+<ServerManagerConfiguration>
+  <ProxyGroup name="filters">
+    <SourceProxy name="ttkMergeTreePrincipalGeodesics" class="ttkMergeTreePrincipalGeodesics" label="TTK MergeTreePrincipalGeodesics">
+      <Documentation long_help="MergeTreePrincipalGeodesics Long" short_help="MergeTreePrincipalGeodesics Short">TODO</Documentation>
+
+      <!-- INPUT DATA OBJECTS -->
+      <InputProperty
+        name="Input"
+        port_index="0"
+        command="SetInputConnection">
+      <ProxyGroupDomain name="groups">
+        <Group name="sources"/>
+        <Group name="filters"/>
+      </ProxyGroupDomain>
+      <DataTypeDomain name="input_type">
+        <DataType value="vtkMultiBlockDataSet"/>
+      </DataTypeDomain>
+      <InputArrayDomain name="input_scalars" number_of_components="1">
+        <Property name="Input" function="FieldDataSelection" />
+      </InputArrayDomain>
+      <Documentation>
+        Merge trees to process.
+      </Documentation>
+    </InputProperty>
+    
+    <InputProperty
+        name="Optional Input"
+        port_index="1"
+        command="SetInputConnection">
+      <ProxyGroupDomain name="groups">
+        <Group name="sources"/>
+        <Group name="filters"/>
+      </ProxyGroupDomain>
+      <DataTypeDomain name="input_type">
+        <DataType value="vtkMultiBlockDataSet"/>
+      </DataTypeDomain>
+      <InputArrayDomain name="input_scalars" number_of_components="1">
+        <Property name="Input" function="FieldDataSelection" />
+      </InputArrayDomain>
+      <Documentation>
+        This input is used for the clustering of merge trees that can use join and split tree together. Pass as input either join or split trees in the first input and the other type of trees in the second input.
+      </Documentation>
+    </InputProperty>
+
+      <!-- INPUT PARAMETER WIDGETS -->
+      <IntVectorProperty
+      name="BackendGeod"
+      label="Backend"
+      command="SetBackendGeod"
+      number_of_elements="1"
+      default_values="0">
+      <EnumerationDomain name="enum">
+          <Entry value="0" text="Closed Form"/>
+          <Entry value="1" text="Gradient Descent [Seguy and Cuturi, 2015]"/>
+      </EnumerationDomain>
+        <Documentation>
+          
+        </Documentation>
+      </IntVectorProperty>
+      
+      <DoubleVectorProperty
+      name="GradientStep"
+      command="SetGradientStep"
+      label="Gradient Step"
+      number_of_elements="1"
+      default_values="1e-3">
+        <Hints>
+        <PropertyWidgetDecorator type="GenericDecorator"
+                                mode="visibility"
+                                property="BackendGeod"
+                                value="1" />
+        </Hints>
+        <Documentation>
+          
+        </Documentation>
+      </DoubleVectorProperty>
+      
+      <DoubleVectorProperty
+      name="Regularizer"
+      command="SetRegularizer"
+      label="Regularizer"
+      number_of_elements="1"
+      default_values="1">
+        <Hints>
+        <PropertyWidgetDecorator type="GenericDecorator"
+                                mode="visibility"
+                                property="BackendGeod"
+                                value="1" />
+        </Hints>
+        <Documentation>
+          
+        </Documentation>
+      </DoubleVectorProperty>
+      
+      <IntVectorProperty
+      name="NormalizedWasserstein"
+      command="SetNormalizedWasserstein"
+      label="Normalized Wasserstein"
+      number_of_elements="1"
+      default_values="1">
+        <Documentation>
+          
+        </Documentation>
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+    
+      <IntVectorProperty
+      name="NumberOfGeodesics"
+      command="SetNumberOfGeodesics"
+      label="Number Of Geodesics"
+      number_of_elements="1"
+      default_values="1">
+        <Documentation>
+          Number of geodesics to compute.
+        </Documentation>
+      </IntVectorProperty>
+      
+      <IntVectorProperty
+      name="NumberOfProjectionIntervals"
+      command="SetNumberOfProjectionIntervals"
+      label="Number Of Projection Intervals"
+      number_of_elements="1"
+      default_values="16">
+        <Documentation>
+          Number of intervals in the geodesic to compute the projection of each input.
+        </Documentation>
+      </IntVectorProperty>
+      
+      <IntVectorProperty
+      name="NumberOfProjectionSteps"
+      command="SetNumberOfProjectionSteps"
+      label="Number Of Projection Steps"
+      number_of_elements="1"
+      default_values="8"
+      panel_visibility="advanced">
+        <Documentation>
+          
+        </Documentation>
+      </IntVectorProperty>
+      
+      <IntVectorProperty
+      name="BarycenterMaximumNumberOfPairs"
+      command="SetBarycenterMaximumNumberOfPairs"
+      label="Barycenter Maximum Number Of Pairs"
+      number_of_elements="1"
+      default_values="0"
+      panel_visibility="advanced">
+        <Documentation>
+          
+        </Documentation>
+      </IntVectorProperty>
+      
+      <DoubleVectorProperty
+      name="BarycenterSizeLimitPercent"
+      command="SetBarycenterSizeLimitPercent"
+      label="Barycenter Size Limit Percent"
+      number_of_elements="1"
+      default_values="0"
+      panel_visibility="advanced">
+        <Documentation>
+          
+        </Documentation>
+        <DoubleRangeDomain name="range" min="0" max="100" />
+      </DoubleVectorProperty>
+      
+      <IntVectorProperty
+      name="Deterministic"
+      command="SetDeterministic"
+      label="Deterministic"
+      number_of_elements="1"
+      default_values="0">
+        <Documentation>
+          
+        </Documentation>
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+      
+      <DoubleVectorProperty
+      name="JoinSplitMixtureCoefficient"
+      command="SetJoinSplitMixtureCoefficient"
+      label="Join Split Mixture Coefficient"
+      number_of_elements="1"
+      default_values="0.5"
+      panel_visibility="advanced">
+        <Documentation>
+          When Input2 is filled, either it contains split tree and Input1 join tree or the other way around. This parameter allows to ponderate more or less the second input or the first one in the computation.
+        </Documentation>
+        <DoubleRangeDomain name="range" min="0" max="1" />
+      </DoubleVectorProperty>
+      
+      <IntVectorProperty
+      name="UseAugmentedEnergy"
+      command="SetUseAugmentedEnergy"
+      label="Use Augmented Energy"
+      number_of_elements="1"
+      default_values="0"
+      panel_visibility="advanced">
+        <Documentation>
+          
+        </Documentation>
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+      
+      <DoubleVectorProperty
+      name="PropCostWeight"
+      command="SetPropCostWeight"
+      label="Prop. cost weight"
+      number_of_elements="1"
+      default_values="1"
+      panel_visibility="advanced">
+        <Hints>
+        <PropertyWidgetDecorator type="GenericDecorator"
+                                mode="visibility"
+                                property="UseAugmentedEnergy"
+                                value="1" />
+        </Hints>
+        <Documentation>
+          
+        </Documentation>
+      </DoubleVectorProperty>
+      
+      <DoubleVectorProperty
+      name="OrthoCostWeight"
+      command="SetOrthoCostWeight"
+      label="Ortho. cost weight"
+      number_of_elements="1"
+      default_values="1"
+      panel_visibility="advanced">
+        <Hints>
+        <PropertyWidgetDecorator type="GenericDecorator"
+                                mode="visibility"
+                                property="UseAugmentedEnergy"
+                                value="1" />
+        </Hints>
+        <Documentation>
+          
+        </Documentation>
+      </DoubleVectorProperty>
+      
+      <DoubleVectorProperty
+      name="MapCostWeight"
+      command="SetMapCostWeight"
+      label="Map. cost weight"
+      number_of_elements="1"
+      default_values="1"
+      panel_visibility="advanced">
+        <Hints>
+        <PropertyWidgetDecorator type="GenericDecorator"
+                                mode="visibility"
+                                property="UseAugmentedEnergy"
+                                value="1" />
+        </Hints>
+        <Documentation>
+          
+        </Documentation>
+      </DoubleVectorProperty>
+      
+      <IntVectorProperty
+      name="MoveVectorsAlongGeodesics"
+      command="SetMoveVectorsAlongGeodesics"
+      label="Move vectors along geodesics"
+      number_of_elements="1"
+      default_values="1"
+      panel_visibility="advanced">
+        <Documentation>
+          
+        </Documentation>
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+      
+      <IntVectorProperty
+      name="TggPaperProjection"
+      command="SetTggPaperProjection"
+      label="TggPaperProjection"
+      number_of_elements="1"
+      default_values="1">
+        <Documentation>
+          
+        </Documentation>
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+      
+      <IntVectorProperty
+      name="KeepState"
+      command="SetKeepState"
+      label="Keep State"
+      number_of_elements="1"
+      default_values="0">
+        <Documentation>
+          
+        </Documentation>
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+
+      <!-- OUTPUT PARAMETER WIDGETS -->
+      <IntVectorProperty
+      name="ComputeReconstructionError"
+      command="SetComputeReconstructionError"
+      label="Compute Reconstruction Error"
+      number_of_elements="1"
+      default_values="0"
+      panel_visibility="advanced">
+        <Documentation>
+          
+        </Documentation>
+        <BooleanDomain name="bool"/>
+      </IntVectorProperty>
+      
+      <!-- Testing PARAMETER WIDGETS -->
+      <IntVectorProperty
+      name="NodePerTask"
+      command="SetNodePerTask"
+      label="Node Per Task"
+      number_of_elements="1"
+      default_values="32">
+        <Documentation>
+          
+        </Documentation>
+      </IntVectorProperty>
+      
+      <IntVectorProperty
+      name="ParallelMode"
+      label="ParallelMode"
+      command="SetParallelMode"
+      number_of_elements="1"
+      default_values="0">
+      <EnumerationDomain name="enum">
+          <Entry value="0" text="Double"/>
+          <Entry value="1" text="Simple"/>
+          <Entry value="2" text="Double - triangle inequality"/>
+          <Entry value="3" text="Simple - triangle inequality"/>
+      </EnumerationDomain>
+        <Documentation>
+          
+        </Documentation>
+      </IntVectorProperty>
+
+      <!-- Create a UI group that contains all input parameter widgets -->
+      <PropertyGroup panel_widget="Line" label="Input options">
+        <Property name="BackendGeod"/>
+        <Property name="GradientStep"/>
+        <Property name="Regularizer"/>
+        <Property name="NormalizedWasserstein"/>
+        <Property name="NumberOfGeodesics"/>
+        <Property name="NumberOfProjectionIntervals"/>
+        <Property name="NumberOfProjectionSteps"/>
+        <Property name="BarycenterMaximumNumberOfPairs"/>
+        <Property name="BarycenterSizeLimitPercent"/>
+        <Property name="Deterministic"/>
+        <Property name="UseAugmentedEnergy"/>
+        <Property name="PropCostWeight"/>
+        <Property name="OrthoCostWeight"/>
+        <Property name="MapCostWeight"/>
+        <Property name="MoveVectorsAlongGeodesics"/>
+        <Property name="TggPaperProjection"/>
+        <Property name="KeepState"/>
+      </PropertyGroup>
+      ${MERGE_TREE_PREPROCESS_WIDGETS}
+
+      <!-- Create a UI group that contains all output parameter widgets -->
+      <PropertyGroup panel_widget="Line" label="Output options">
+        <Property name="ComputeReconstructionError"/>
+      </PropertyGroup>
+      
+      <PropertyGroup panel_widget="Line" label="Testing options">
+        <Property name="ParallelMode"/>
+        <Property name="NodePerTask"/>
+      </PropertyGroup>
+      
+      <!-- OUTPUT PORT -->
+      <OutputPort name="Barycenter" index="0" id="port0" />
+      <OutputPort name="Coefficients" index="1" id="port1" />
+      <OutputPort name="Geodesics Vectors" index="2" id="port2" />
+      <OutputPort name="Correlation Matrix" index="3" id="port3" />
+
+      <!-- DEBUG -->
+      ${DEBUG_WIDGETS}
+
+      <!-- MENU CATEGORY -->
+      <Hints>
+        <ShowInMenu category="TTK - Ensemble Scalar Data" />
+      </Hints>
+    </SourceProxy>
+  </ProxyGroup>
+</ServerManagerConfiguration>

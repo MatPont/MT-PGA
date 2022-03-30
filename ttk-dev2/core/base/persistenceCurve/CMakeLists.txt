@@ -1,0 +1,10 @@
+ttk_add_base_library(persistenceCurve
+  SOURCES
+    PersistenceCurve.cpp
+  HEADERS
+    PersistenceCurve.h
+  DEPENDS
+    discreteGradient
+    triangulation
+    ftmTreePP
+    )
