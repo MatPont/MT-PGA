@@ -13,6 +13,7 @@ barySizeLimit = 0.0
 nodePerTask = 32
 isPD = False
 deterministic = 1
+noThreads = 1
 
 openCDB = True
 noGeod = 2
@@ -121,6 +122,9 @@ def gpcaMT(group1, group2=None, tTKMergeTreePrincipalGeodesics1=None):
   tTKMergeTreePrincipalGeodesics1.JoinSplitMixtureCoefficient = coef
   tTKMergeTreePrincipalGeodesics1.BarycenterSizeLimitPercent = barySizeLimit
   
+  tTKMergeTreePrincipalGeodesics1.UseAllCores = 0
+  tTKMergeTreePrincipalGeodesics1.ThreadNumber = noThreads
+  
   tTKMergeTreePrincipalGeodesics1.UpdatePipeline()
   
   if saveCoef:
@@ -156,6 +160,7 @@ if __name__ == "__main__":
   coef = float(sys.argv[6]) # 0: ST ; 1: JT
   barySizeLimit = float(sys.argv[7])
   isPD = isPD if len(sys.argv) < 9 else int(sys.argv[8])
+  noThreads = noThreads if len(sys.argv) < 10 else int(sys.argv[9])
     
   print("persistence_threshold =", pt)
   print("epsilon               =", eps1)
@@ -163,13 +168,12 @@ if __name__ == "__main__":
   print("epsilon3              =", eps3)
   print("coef                  =", coef)
   print("barySizeLimit         =", barySizeLimit)
+  print("noThreads             =", noThreads)
   
   if saveCoef:
     print("Save coef.")
   if saveOutput:
     print("Save output")
-  if saveSurfaceDistMat:
-    print("Save surface dist. mat.")
   if saveRecTrees:
     print("Save rec. trees")
   
