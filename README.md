@@ -12,10 +12,12 @@ sudo apt-get install python3-sklearn
 
 ## Install Paraview
 
-First, go in the `ttk-paraview` directory then run the following commands:
+First, go in the root of the extracted archive then run the following commands:
 (replace the 4 in "make -j4" by the number of available cores on your system)
 
 ```bash
+git clone https://github.com/topology-tool-kit/ttk-paraview.git
+cd ttk-paraview
 mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DPARAVIEW_USE_PYTHON=ON -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON -DCMAKE_INSTALL_PREFIX=../install ..
 make -j4
@@ -50,7 +52,7 @@ Go in the `ttk-dev2` directory then run the following commands:
 ```bash
 mkdir build && cd build
 paraviewPath=`pwd`/../../ttk-paraview/install/lib/cmake/paraview-5.10
-pluginDir=`pwd`/lib/TopologyToolKit
+pluginDir=`pwd`/../../ttk-paraview/install/lib/paraview-5.10
 cmake -DCMAKE_INSTALL_PREFIX=../install -DParaView_DIR=$paraviewPath -DTTK_INSTALL_PLUGIN_DIR=$pluginDir ..
 make -j4
 make install
