@@ -39,7 +39,7 @@ tar xf cmake-3.21.6.tar.gz
 cd cmake-3.21.6
 ./configure --prefix="./install/"
 make -j4
-make install
+make -j4 install
 ```
 
 In all the following steps, please replace `cmake` by `../../cmake-3.21.6/install/bin/cmake`.
@@ -55,7 +55,7 @@ cd ttk-paraview
 mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DPARAVIEW_USE_PYTHON=ON -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON -DCMAKE_INSTALL_PREFIX=../install ..
 make -j4
-make install
+make -j4 install
 ```
 
 Some warnings are expected when using the `make` command, they should not cause any problems.
@@ -70,7 +70,7 @@ mkdir build && cd build
 paraviewPath=`pwd`/../../ttk-paraview/install/lib/cmake/paraview-5.9
 cmake -DCMAKE_INSTALL_PREFIX=../install -DParaView_DIR=$paraviewPath ..
 make -j4
-make install
+make -j4 install
 ```
 
 Stay in the build directory and set the environment variables:
