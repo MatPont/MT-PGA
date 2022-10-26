@@ -1,4 +1,4 @@
-# PrincipalGeodesicAnalysisMergeTree
+# MT-PGA
 
 This github repository contains the exact code used for the reference below.
 
