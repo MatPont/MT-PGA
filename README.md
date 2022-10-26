@@ -46,7 +46,7 @@ In all the following steps, please replace `cmake` by `../../cmake-3.21.6/instal
 
 ### Install Paraview
 
-First, go outside of this repository then run the following commands:
+First, go in the directory where this repository (`MT-PGA`) is and run the following commands:
 (replace the `4` in `make -j4` by the number of available cores on your system)
 
 ```bash
