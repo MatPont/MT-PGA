@@ -1,8 +1,22 @@
 # PrincipalGeodesicAnalysisMergeTree
 
+This github repository contains the exact code used for the reference below.
+
+## Reference
+
+If you plan to use this code to generate results for a scientific document, thanks for referencing the following publication:
+
+"Principal Geodesic Analysis of Merge Trees (and Persistence Diagrams)"  
+Mathieu Pont, Jules Vidal, Julien Tierny  
+IEEE Transactions on Visualization and Computer Graphics, 2022.  
+
+[Paper](https://arxiv.org/pdf/2207.10960.pdf)
+
+## Installation Note
+
 Tested on Ubuntu 20.04.4 LTS.
 
-## Install the dependencies
+### Install the dependencies
 
 ```bash
 sudo apt-get install cmake-qt-gui libboost-system-dev libpython3.8-dev libxt-dev libxcursor-dev libopengl-dev
@@ -11,7 +25,7 @@ sudo apt-get install python3-sklearn
 sudo apt-get install libsqlite3-dev 
 ```
 
-## Install cmake 3.21 (Optional)
+### Install cmake 3.21 (Optional)
 
 To install TTK (next step), you will need cmake 3.21 or higher.
 If your OS does not allow to install automatically the latest version of cmake (like Ubuntu 20) you can install it with the following commands:
@@ -30,7 +44,7 @@ make install
 
 In all the following steps, please replace `cmake` by `../../cmake-3.21.6/install/bin/cmake`.
 
-## Install Paraview
+### Install Paraview
 
 First, go in the root of the extracted archive then run the following commands:
 (replace the 4 in "make -j4" by the number of available cores on your system)
@@ -46,7 +60,7 @@ make install
 
 Some warnings are expected when using the `make` command, they should not cause any problems.
 
-## Install TTK
+### Install TTK
 
 Go in the `ttk-dev2` directory then run the following commands:
 (replace the 4 in "make -j4" by the number of available cores on your system)
@@ -69,7 +83,7 @@ export LD_LIBRARY_PATH=$TTK_PREFIX/lib:$LD_LIBRARY_PATH
 export PYTHONPATH=$TTK_PREFIX/lib/python3.8/site-packages
 ```
 
-## Get the results
+### Get the results
 
 Go in the root directory of the unziped archive and extract the data:
 
@@ -77,7 +91,7 @@ Go in the root directory of the unziped archive and extract the data:
 tar xvJf data.tar.xz
 ```
 
-### table 1
+#### table 1
 
 To reproduce the results of the time table in the paper, please go in the `scripts` directory and enter the following commands:
 
