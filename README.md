@@ -29,6 +29,7 @@ sudo apt-get install libsqlite3-dev
 
 To install TTK (one of the next step), you will need cmake 3.21 or higher.
 If your OS does not allow to install automatically the latest version of cmake (like Ubuntu 20) you can install it with the following commands:
+(while being in the parent directory of where this repository (`MT-PGA`) is)
 (replace the 4 in "make -j4" by the number of available cores on your system)
 (if you do not want to install libssl-dev you can add `-DCMAKE_USE_OPENSSL=OFF` at the end of the command `configure`)
 
@@ -46,7 +47,7 @@ In all the following steps, please replace `cmake` by `../../cmake-3.21.6/instal
 
 ### Install Paraview
 
-First, go in the directory where this repository (`MT-PGA`) is and run the following commands:
+First, go in the parent directory of where this repository (`MT-PGA`) is and run the following commands:
 (replace the `4` in `make -j4` by the number of available cores on your system)
 
 ```bash
