@@ -53,6 +53,7 @@ First, go in the parent directory of where this repository (`MT-PGA`) is and run
 ```bash
 git clone https://github.com/topology-tool-kit/ttk-paraview.git
 cd ttk-paraview
+git checkout 5.10.0
 mkdir build && cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DPARAVIEW_USE_PYTHON=ON -DPARAVIEW_INSTALL_DEVELOPMENT_FILES=ON -DCMAKE_INSTALL_PREFIX=../install ..
 make -j4
