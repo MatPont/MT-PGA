@@ -49,6 +49,8 @@ In all the following steps, please replace the command `cmake` by the binary `PA
 cmake=`pwd`/install/bin/cmake
 ```
 
+And replace `cmake` by `$cmake` in the following commands.
+
 ### Install Paraview
 
 First, go in the parent directory of where this repository (`MT-PGA`) is and run the following commands:  
