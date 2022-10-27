@@ -107,10 +107,11 @@ To reproduce the results of the time table in the paper, please go in the `scrip
 for f in *.sh; do chmod u+x $f; done
 ```
 
-Run the experiments (it will take a LONG time) and print table:
-(replace N with the number of available cores on your system)
+Run the experiments (it will take a LONG time) and print table:  
+(replace N with the number of available cores on your system)  
+**To decrease computation time** you can set the optionnal parameter `ptMult` to a value greater than 1. It will have the effect to multiply the persistence thresholds by `ptMult` and hence decreasing the computation time (for example, replace `[ptMult]` by `7`, default value is `1`).
 
 ```bash
-./automata2.sh N
+./automata2.sh N [ptMult]
 ./timeTable.sh
 ```
