@@ -43,7 +43,7 @@ make -j4
 make -j4 install
 ```
 
-In all the following steps, please replace `cmake` by `../../cmake-3.21.6/install/bin/cmake`.
+In all the following steps, please replace `cmake` by `../../../cmake-3.21.6/install/bin/cmake`.
 
 ### Install Paraview
 
@@ -69,7 +69,7 @@ Go in the `ttk-dev2` directory then run the following commands:
 
 ```bash
 mkdir build && cd build
-paraviewPath=`pwd`/../../ttk-paraview/install/lib/cmake/paraview-5.9
+paraviewPath=`pwd`/../../../ttk-paraview/install/lib/cmake/paraview-5.9
 cmake -DCMAKE_INSTALL_PREFIX=../install -DParaView_DIR=$paraviewPath ..
 make -j4
 make -j4 install
