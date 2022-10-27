@@ -43,7 +43,7 @@ make -j4
 make -j4 install
 ```
 
-In all the following steps, please replace the command `cmake` by the binary in the folder `cmake-3.21.6/install/bin/cmake`.
+In all the following steps, please replace the command `cmake` by the binary `PATHTO/cmake-3.21.6/install/bin/cmake` (replace `PATHTO` by the absolute path to the `cmake-3.21.6` folder).
 
 ### Install Paraview
 
