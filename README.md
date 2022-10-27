@@ -47,7 +47,7 @@ In all the following steps, please replace the command `cmake` by the binary `PA
 
 ### Install Paraview
 
-First, go in the parent directory of where this repository (`MT-PGA`) is and run the following commands:
+First, go in the parent directory of where this repository (`MT-PGA`) is and run the following commands:  
 (replace the `4` in `make -j4` by the number of available cores on your system)
 
 ```bash
@@ -64,7 +64,7 @@ Some warnings are expected when using the `make` command, they should not cause 
 
 ### Install TTK
 
-Go in the `ttk-dev2` directory then run the following commands:
+Go in the `ttk-dev2` directory then run the following commands:  
 (replace the `4` in `make -j4` by the number of available cores on your system)
 
 ```bash
