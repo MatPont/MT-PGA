@@ -20,7 +20,7 @@ for isPD in 0 1; do
       fi
     fi
   
-    ./automata.sh $isPD $noThread 2>&1 $outFile
+    ./automata.sh $isPD $noThread 2>&1 | tee $outFile
   done  
 done
 
