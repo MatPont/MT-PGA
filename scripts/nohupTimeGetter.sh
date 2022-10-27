@@ -37,7 +37,7 @@ echo "$allText" | grep "Cumulative explained T-Variance" | tail -1
 # Energy
 ###############################################################################
 
-#exit
+exit
 
 dir=nohupEnergy
 if [ ! -d $dir ]; then
