@@ -14,7 +14,7 @@ IEEE Transactions on Visualization and Computer Graphics, 2022.
 
 ## Installation Note
 
-Tested on Ubuntu 20.04.4 LTS.
+Tested on Ubuntu 20.04.5 LTS.
 
 ### Install the dependencies
 
