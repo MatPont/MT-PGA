@@ -23,7 +23,7 @@ eps1s=($defaultEps1 $defaultEps1 $defaultEps1 $defaultEps1 $defaultEps1 10 $defa
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
-pvpython=../ttk-paraview/install/bin/pvpython
+pvpython=../../ttk-paraview/install/bin/pvpython
 
 eps2=95
 eps3=90
