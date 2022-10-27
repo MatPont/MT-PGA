@@ -1,5 +1,5 @@
-if [ $# -ne 1 ]; then
-  echo "Usage "$0 "numberOfThreads"
+if [ $# -lt 1 -o $# -gt 2 ]; then
+  echo "Usage "$0 "numberOfThreads [persistenceThresholdMultiplier]"
   exit
 fi
 
@@ -20,7 +20,7 @@ for isPD in 0 1; do
       fi
     fi
   
-    ./automata.sh $isPD $noThread 2>&1 | tee $outFile
+    ./automata.sh $isPD $noThread $2 2>&1 | tee $outFile
   done  
 done
 
