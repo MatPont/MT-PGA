@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ $# -ne 2 ]; then
-  echo "Usage "$0 "isPD numberOfThreads"
+if [ $# -lt 2 -o $# -gt 3 ]; then
+  echo "Usage "$0 "isPD numberOfThreads [persistenceThresholdMultiplier]"
   exit
 fi
 
@@ -33,6 +33,7 @@ barySizeLimit=20
 
 isPD=$1
 noThreads=$2
+ptMult=$3
 
 for j in `seq 1 $noRun`; do
   len=`expr ${#paths[@]} - 1`
@@ -41,6 +42,10 @@ for j in `seq 1 $noRun`; do
     pt=${pts[$i]}
     coef=${coefs[$i]}
     eps=${eps1s[$i]}
+    
+    if [[ $ptMult != "" ]]; then
+      pt=`echo $pt \* $ptMult | bc`
+    fi
     
     coef=0 # only compute on split trees
     
