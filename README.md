@@ -23,6 +23,7 @@ sudo apt-get install cmake-qt-gui libboost-system-dev libpython3.8-dev libxt-dev
 sudo apt-get install qt5-default qttools5-dev libqt5x11extras5-dev libqt5svg5-dev qtxmlpatterns5-dev-tools 
 sudo apt-get install python3-sklearn 
 sudo apt-get install libsqlite3-dev 
+sudo apt-get install gawk
 ```
 
 ### Install cmake 3.21 (Optional)
