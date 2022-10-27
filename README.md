@@ -87,7 +87,7 @@ export PYTHONPATH=$TTK_PREFIX/lib/python3.8/site-packages
 
 ### Get the results
 
-Go in the root directory of the unziped archive and extract the data:
+Go in the root directory of this repository and extract the data:
 
 ```bash
 tar xvJf data.tar.xz
