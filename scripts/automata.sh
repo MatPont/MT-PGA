@@ -32,7 +32,7 @@ noRun=1
 barySizeLimit=20
 
 isPD=$1
-noThread=$2
+noThreads=$2
 
 for j in `seq 1 $noRun`; do
   len=`expr ${#paths[@]} - 1`
