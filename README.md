@@ -109,7 +109,7 @@ for f in *.sh; do chmod u+x $f; done
 
 Run the experiments (it will take a LONG time) and print table:  
 (replace N with the number of available cores on your system)  
-**To decrease computation time** you can set the optionnal parameter `ptMult` to a value greater than 1. It will have the effect to multiply the persistence thresholds by `ptMult` and hence decreasing the computation time (for example, replace `[ptMult]` by `7`, default value is `1`).
+**To decrease computation time** you can set the optionnal parameter `ptMult` to a value greater than 1. It will have the effect to multiply the persistence thresholds by `ptMult` and hence decreasing the computation time (for example, replace `[ptMult]` by `7`, default value is `1`). However, the computation time will not decrease the same way for each dataset since the number of pairs removed si not linearly correlated with the persistence threshold.
 
 ```bash
 ./automata2.sh N [ptMult]
