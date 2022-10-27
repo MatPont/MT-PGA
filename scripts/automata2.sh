@@ -6,7 +6,7 @@ fi
 for isPD in 0 1; do
   for noThread in $1 1; do
   
-    if [ $isPD -eq 0 ]; then
+    if [ $isPD -eq 1 ]; then
       if [ $noThread -eq 1 ]; then
         outFile="nohupTGGPP_PD_Seq_BSL20.out"
       else
@@ -20,7 +20,7 @@ for isPD in 0 1; do
       fi
     fi
   
-    ./automata.sh $isPD $noThread > $outFile
+    ./automata.sh $isPD $noThread 2>&1 $outFile
   done  
 done
 
